@@ -195,7 +195,7 @@ class ComputeLoss:
 
         for i in range(self.nl):
             anchors, shape = self.anchors[i], p[i].shape
-            gain[2:6] = gain[2:6] * 0 + paddle.to_tensor(shape)[[3, 2, 3, 2]]  # xyxy gain
+            gain[2:6] = gain[2:6] * 0 + paddle.to_tensor(shape)[[3, 2, 3, 2]].astype(paddle.float32)   # xyxy gain
 
             # Match targets to anchors
             t = targets * gain  # shape(3,n,7)
@@ -231,7 +231,7 @@ class ComputeLoss:
 
             # Append
             indices.append((b, a, gj.clip_(0, shape[2] - 1), gi.clip_(0, shape[3] - 1)))  # image, anchor, grid
-            tbox.append(paddle.concat((gxy - gij, gwh), 1))  # box
+            tbox.append(paddle.concat((gxy - gij.astype(paddle.float32), gwh), 1))  # box
             anch.append(anchors[a])  # anchors
             tcls.append(c)  # class
 

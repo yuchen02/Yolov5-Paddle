@@ -1,0 +1,8 @@
+# Ignore both  
+__pycache__/
+*.py[cod]
+*$py.class
+*.cache
+
+# ignore dir
+runs/

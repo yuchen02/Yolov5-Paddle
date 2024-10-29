@@ -45,7 +45,7 @@ def convert_annotation(xml_files_path, save_txt_files_path, classes):
 
 if __name__ == "__main__":
     # 1、需要转化的类别
-    classes = ['background','aeroplane','bicycle','bird','boat','bottle','bus','car','cat',\
+    classes = ['aeroplane','bicycle','bird','boat','bottle','bus','car','cat',\
         'chair','cow','diningtable','dog','horse','motorbike','person','pottedplant','sheep',\
             'sofa','train','tvmonitor']
     # 2、voc格式的xml标签文件路径

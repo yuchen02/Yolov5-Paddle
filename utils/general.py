@@ -151,7 +151,7 @@ if platform.system() == 'Windows':
         setattr(LOGGER, fn.__name__, lambda x: fn(emojis(x)))  # emoji safe logging
 
 
-def user_config_dir(dir='GuoQuanhao', env_var='YOLOV5_CONFIG_DIR'):
+def user_config_dir(dir='yolov5', env_var='YOLOV5_CONFIG_DIR'):
     # Return path of user configuration directory. Prefer environment variable if exists. Make dir if required.
     env = os.getenv(env_var)
     if env:
@@ -164,7 +164,7 @@ def user_config_dir(dir='GuoQuanhao', env_var='YOLOV5_CONFIG_DIR'):
     return path
 
 
-CONFIG_DIR = user_config_dir()  # GuoQuanhao settings dir
+CONFIG_DIR = user_config_dir()  # settings dir
 
 
 class Profile(contextlib.ContextDecorator):
@@ -494,7 +494,7 @@ def check_font(font=FONT, progress=False):
     font = Path(font)
     file = CONFIG_DIR / font.name
     if not font.exists() and not file.exists():
-        url = f'http://182.61.54.236/yolov5/{font.name}'
+        url = f'https://ultralytics.com/assets/{font.name}'
         LOGGER.info(f'Downloading {url} to {file}...')
         download_url_to_file(url, str(file), progress=progress)
 
