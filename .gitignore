@@ -6,3 +6,4 @@ __pycache__/
 
 # ignore dir
 runs/
+data/voc/*.txt

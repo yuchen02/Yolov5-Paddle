@@ -206,7 +206,7 @@ def run(
 
         # NMS
         if targets.shape[0]:
-            targets[:, 2:] *= paddle.to_tensor((width, height, width, height))  # to pixels
+            targets[:, 2:] *= paddle.to_tensor((width, height, width, height)).astype(paddle.float32)   # to pixels
             lb = [targets[targets[:, 0] == i, 1:] for i in range(nb)] if save_hybrid else []  # for autolabelling
         else:
             lb = []
